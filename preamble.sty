@@ -1,0 +1,62 @@
+\documentclass[12pt]{article}
+
+\usepackage[spanish]{babel}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{lipsum}
+\usepackage{parskip}
+\usepackage{tabularx}
+\usepackage{etoolbox}
+
+\geometry{
+    letterpaper,
+    top=2cm,
+    bottom=2cm,
+    left=2.5cm,
+    right=2.5cm,
+}
+
+\input{config.tex}
+
+\lhead{\contestauthor \\ \contestname}
+\rhead{\includegraphics[scale=0.3]{logo.png}}
+\setlength\headheight{31.58pt}
+
+\pagestyle{fancy}
+
+\newcounter{problemnumber}
+\stepcounter{problemnumber}
+
+\newenvironment{problem}[3]
+{
+    \section*{Problema \Alph{problemnumber}. #1}
+    {
+        \small
+        \begin{center}
+        Tiempo límite por test: #2 segundo\ifstrequal{#2}{1}{\empty}{s} \\
+        Memoria límite por test: #3 megabyte\ifstrequal{#3}{1}{\empty}{s}
+        \end{center}
+    }
+
+}
+{
+    \stepcounter{problemnumber}
+    \clearpage
+}
+
+\newcommand{\getcase}[1]{\verbatiminput{testcases/\Alph{problemnumber}/#1}}
+\newcommand{\testcase}[1]{\getcase{#1.in} & \getcase{#1.out} \\ \hline}
+
+\newcommand{\probleminputformat}{\subsection*{Formato de entrada}}
+\newcommand{\problemoutputformat}{\subsection*{Formato de salida}}
+\newenvironment{problemexamples}{
+    \subsection*{Ejemplos}
+    \tt
+    \tabularx{\textwidth}{|X|X|}
+        \hline
+        \textbf{\rmfamily Entrada} & \textbf{\rmfamily Salida} \\ \hline
+}
+{
+    \endtabularx
+}
