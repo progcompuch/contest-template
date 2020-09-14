@@ -1,4 +1,4 @@
-# template-contest
+# contest-template
 LaTeX Template para creación de _statements_ para competencias de programación organizadas por Programación Competitiva UChile.
 
 ## Tabla de contenidos
@@ -34,26 +34,27 @@ El ambiente _problemexamples_ es usado para colocar casos de prueba de ejemplo. 
 ├── logo.png
 ├── main.tex
 ├── preamble.sty
-├── testcases
-│   ├── A
-│   │   ├── 1.in
-│   │   ├── 1.out
-│   │   ├── 2.in
-│   │   └── 2.out
-│   ├── B
-│   ├── C
-│   ├── D
-│   ├── E
-│   ├── F
-│   ├── G
-│   ├── H
-│   ├── I
-│   ├── J
-│   ├── K
-│   ├── L
-│   └── M
-└── tree
+└── testcases
+    ├── A
+    │   ├── 1.in
+    │   ├── 1.out
+    │   ├── 2.in
+    │   └── 2.out
+    ├── B
+    ├── C
+    ├── D
+    ├── E
+    ├── F
+    .
+    .
+    .
 ```
+- `config.tex` posee algunas configuraciones básicas del documento.
+- `logo.png` es el logo a usar en el template.
+- `main.tex` es el archivo principal, donde se tipean los problemas.
+- `preamble.sty` es el cuerpo del template.
+- En `testcases` se crea un subdirectorio para cada problema. Estos deben tener de nombre una letra mayúscula. Dentro de cada uno de estos, se crean los archivos `i.in` e `i.out` para cada caso de prueba de ejemplo a usar en el documento.
+
 
 ## Ejemplo
 ```latex
