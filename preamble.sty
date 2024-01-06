@@ -19,6 +19,10 @@
 
 \input{config.tex}
 
+
+\def\in{in.txt}
+\def\out{out.txt}
+
 \lhead{\contestauthor \\ \contestname}
 \rhead{\includegraphics[scale=0.3]{logo.png}}
 \setlength\headheight{31.58pt}
@@ -46,7 +50,7 @@
 }
 
 \newcommand{\getcase}[1]{\verbatiminput{testcases/\Alph{problemnumber}/#1}}
-\newcommand{\testcase}[1]{\getcase{#1.in} & \getcase{#1.out} \\ \hline}
+\newcommand{\testcase}[1]{\getcase{#1\in} & \getcase{#1\out} \\ \hline}
 
 \newcommand{\probleminputformat}{\subsection*{Formato de entrada}}
 \newcommand{\problemoutputformat}{\subsection*{Formato de salida}}
