@@ -9,7 +9,7 @@ LaTeX Template para creación de _statements_ para competencias de programación
 * [Ejemplo](#ejemplo)
 
 ## Ambiente problem
-El ambiente _problem_ recibe dos parámetros:
+El ambiente _problem_ recibe tres parámetros:
 ```latex
 \begin{problem}{problem title}{time limit}{memory limit}
 
