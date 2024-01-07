@@ -36,10 +36,10 @@ El ambiente _problemexamples_ es usado para colocar casos de prueba de ejemplo. 
 ├── preamble.sty
 └── testcases
     ├── A
-    │   ├── 1.in
-    │   ├── 1.out
-    │   ├── 2.in
-    │   └── 2.out
+    │   ├── 1in.txt
+    │   ├── 1out.txt
+    │   ├── 2in.txt
+    │   └── 2out.txt
     ├── B
     ├── C
     ├── D
