@@ -1,13 +1,13 @@
-\documentclass[12pt]{article}
-
 \usepackage[spanish]{babel}
 \usepackage{geometry}
+\usepackage{animate}
 \usepackage{graphicx}
 \usepackage{fancyhdr}
 \usepackage{lipsum}
 \usepackage{parskip}
 \usepackage{tabularx}
 \usepackage{etoolbox}
+\usepackage{verbatim}
 
 \geometry{
     letterpaper,
@@ -18,6 +18,15 @@
 }
 
 \input{config.tex}
+
+\newcounter{NumFiles}
+\setcounter{NumFiles}{0}
+\newboolean{stop}
+\setboolean{stop}{false}
+
+\def\in{in}
+\def\out{out}
+\def\newl{\\ \hline}
 
 \lhead{\contestauthor \\ \contestname}
 \rhead{\includegraphics[scale=0.3]{logo.png}}
@@ -46,17 +55,39 @@
 }
 
 \newcommand{\getcase}[1]{\verbatiminput{testcases/\Alph{problemnumber}/#1}}
-\newcommand{\testcase}[1]{\getcase{#1.in} & \getcase{#1.out} \\ \hline}
+\newcommand{\testcase}[1]{\getcase{\in#1.txt} & \getcase{\out#1.txt}\\ \hline}
 
 \newcommand{\probleminputformat}{\subsection*{Formato de entrada}}
 \newcommand{\problemoutputformat}{\subsection*{Formato de salida}}
+
+
 \newenvironment{problemexamples}{
     \subsection*{Ejemplos}
     \tt
     \tabularx{\textwidth}{|X|X|}
         \hline
         \textbf{\rmfamily Entrada} & \textbf{\rmfamily Salida} \\ \hline
+        \whiledo{\NOT\boolean{stop}}{
+            \stepcounter{NumFiles}
+            \addtocounter{NumFiles}{1}
+            \IfFileExists{./testcases/\Alph{problemnumber}/in\theNumFiles.txt}{  
+                \addtocounter{NumFiles}{-1}
+                \testcase{\theNumFiles}
+            }{
+                \setboolean{stop}{true}
+                \addtocounter{NumFiles}{-1}
+            }
+        }
+        \testcase{\theNumFiles}
 }
 {
     \endtabularx
+}
+
+
+\newcommand{\problemexample}{
+    \begin{problemexamples}
+    \end{problemexamples}
+    \setboolean{stop}{false}
+    \setcounter{NumFiles}{0}
 }
